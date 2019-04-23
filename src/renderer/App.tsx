@@ -3,9 +3,9 @@ import { Route } from "react-router-dom";
 import Navbar from "./Navbar";
 
 import { ThemeProvider, createGlobalStyle } from "styled-components";
-import Modlist from "./ModList";
-import ModManager from "./ModManager";
-import ModDetails from "./ModDetails";
+import Modlist from "./Thunderstore/ModList";
+import ModManager from "./ModManager/ModManager";
+import ModDetails from "./Thunderstore/ModDetails";
 
 const GlobalStyle = createGlobalStyle`
     body {

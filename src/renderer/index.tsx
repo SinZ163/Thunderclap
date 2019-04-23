@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { HashRouter } from "react-router-dom";
 import hljs from "highlight.js";
 
-import ThunderstoreAdapter from "./ThunderstoreAdapter";
+import ThunderstoreAdapter from "./Thunderstore/ThunderstoreAdapter";
 
 import App from "./App";
 

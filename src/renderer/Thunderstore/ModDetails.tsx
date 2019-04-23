@@ -3,7 +3,7 @@ import {RouteComponentProps} from "react-router-dom";
 import { observer } from "mobx-react";
 import Markdown from "react-markdown";
 
-import CodeBlock from "./utils/CodeBlock";
+import CodeBlock from "../utils/CodeBlock";
 import ThunderstoreAdapter from "./ThunderstoreAdapter";
 
 @observer
