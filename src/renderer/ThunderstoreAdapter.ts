@@ -51,7 +51,7 @@ class ThunderstoreAdapter {
 
     // TODO: Populate from local cache before doing network request?
     public async UpdatePackages() {
-        const response = await fetch("https://thunderstore.io/api/v1/package/");
+        const response = await fetch("http://localhost/api/v1/package/");
         const json: Mod[] = await response.json();
         // remove the old array
         this._packages.length = 0;
