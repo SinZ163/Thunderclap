@@ -7,6 +7,9 @@ import ModEntry from "./ModEntry";
 const VerticalLayout = styled.div`
     display: flex;
     flex-direction: column;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 `;
 
 @observer
