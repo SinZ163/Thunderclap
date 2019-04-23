@@ -1,8 +1,11 @@
 import * as React from "react";
+import { Route } from "react-router-dom";
 import Navbar from "./Navbar";
 
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import Modlist from "./ModList";
+import ModManager from "./ModManager";
+import ModDetails from "./ModDetails";
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -24,7 +27,10 @@ export default class App extends React.PureComponent {
                 <React.Fragment>
                     <GlobalStyle />
                     <Navbar />
-                    <Modlist />
+                    <Route path="/" exact component={Modlist} />
+                    <Route path="/package/:owner/:name" component={ModDetails} />
+                    {/* TODO: Work out how to not have this if its not in electron mode*/}
+                    <Route path="/mod-manager" exact component={ModManager} />
                 </React.Fragment>
             </ThemeProvider>
         );

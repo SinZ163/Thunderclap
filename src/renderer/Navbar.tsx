@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
     display: flex;
@@ -7,12 +8,22 @@ const Container = styled.div`
     justify-content: space-evenly;
 `;
 
+const activeClassName = "LinkActive";
+const Link = styled(NavLink).attrs({activeClassName})`
+    color: gray;
+
+    &.${activeClassName} {
+        color: white;
+    }
+`;
+
 export default class Navbar extends React.PureComponent {
     public render() {
         return (
             <Container>
-                <h3>Browse Thunderstore</h3>
-                <h3>Installed Mods</h3>
+                <Link exact to="/"><h3>Browse Thunderstore</h3></Link>
+                {/* TODO: Work out how to not have this if its not in electron mode*/}
+                <Link exact to="/mod-manager"><h3>Installed Mods</h3></Link>
             </Container>
         );
     }
