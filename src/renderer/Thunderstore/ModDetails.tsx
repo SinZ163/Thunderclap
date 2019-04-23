@@ -22,6 +22,7 @@ export default class ModDetails extends React.Component<RouteComponentProps<{own
                 <Markdown
                     source={mod.versions[0].readme}
                     renderers={{code: CodeBlock}}
+                    linkTarget={() => "_blank"}
                 />
                 <pre>
                     {JSON.stringify(mod, undefined, 4)}

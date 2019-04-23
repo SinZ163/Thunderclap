@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Route } from "react-router-dom";
+import { Route, RouteComponentProps, withRouter } from "react-router-dom";
 import Navbar from "./Navbar";
 
 import { ThemeProvider, createGlobalStyle } from "styled-components";
@@ -20,8 +20,15 @@ const GlobalStyle = createGlobalStyle`
 `;
 const theme = {
 }
-export default class App extends React.PureComponent {
+
+class App extends React.Component<RouteComponentProps> {
     public render() {
+        // eslint-disable-next-line no-console
+        console.log("App rerendering");
+        // eslint-disable-next-line no-console
+        console.log(window.location);
+        // eslint-disable-next-line no-console
+        console.log(this.props.history);
         return (
             <ThemeProvider theme={theme}>
                 <React.Fragment>
@@ -36,3 +43,4 @@ export default class App extends React.PureComponent {
         );
     }
 }
+export default withRouter(App);

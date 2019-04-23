@@ -1,6 +1,6 @@
 "use strict";
 
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, Event, shell } from "electron";
 import * as path from "path";
 import { format as formatUrl } from "url";
 
@@ -15,9 +15,9 @@ function createMainWindow() {
         }
     });
 
-    if (isDevelopment) {
-        window.webContents.openDevTools();
-    }
+    //if (isDevelopment || true) {
+    window.webContents.openDevTools();
+    //}
 
     if (isDevelopment) {
         window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`);
@@ -30,6 +30,11 @@ function createMainWindow() {
             })
         );
     }
+
+    window.webContents.on("new-window", (event: Event, url: string) => {
+        event.preventDefault();
+        shell.openExternal(url);
+    });
 
     window.on("closed", () => {
         mainWindow = null;

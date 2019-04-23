@@ -13,6 +13,7 @@ hljs.configure({
 document.head.insertAdjacentHTML("beforeend", `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/atom-one-dark.min.css" />`);
 
 ThunderstoreAdapter.UpdatePackages();
+
 ReactDOM.render(
     <HashRouter>
         <App />
