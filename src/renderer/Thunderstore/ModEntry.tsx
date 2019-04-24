@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled, {css} from "styled-components";
 import {darken} from "polished";
-import {Link} from "react-router-dom";
 
+import Navigation from "../Navigation";
 import {Mod} from "./ThunderstoreAdapter";
 
 const Container = styled.div<{pinned: boolean}>`
@@ -55,20 +55,21 @@ const Anchor = styled.a`
         text-decoration: underline;
     }
 `;
-// Purely because typescript isn't doing prop checks correctly with "as"
-const StyledLink = Anchor.withComponent(Link);
 interface Props {
     mod: Mod;
 }
 
 export default class ModEntry extends React.PureComponent<Props> {
+    public onClick = () => {
+        Navigation.changePage(`/package/${this.props.mod.owner}/${this.props.mod.name}`);
+    }
     public render() {
         return (
             <Container pinned={this.props.mod.is_pinned}>
                 <Image src={this.props.mod.versions[0].icon} />
                 <Column>
                     <Row as="h3">
-                        <StyledLink to={`/package/${this.props.mod.owner}/${this.props.mod.name}`}>{this.props.mod.name}</StyledLink>
+                        <Anchor onClick={this.onClick}>{this.props.mod.name}</Anchor>
                         <span>{this.props.mod.versions[0].version_number}</span>
                     </Row>
                     <span>{this.props.mod.versions[0].description}</span>

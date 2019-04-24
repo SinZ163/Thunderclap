@@ -1,6 +1,8 @@
+import {observer} from "mobx-react";
 import * as React from "react";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import styled, {css} from "styled-components";
+
+import Navigation from "./Navigation";
 
 const Container = styled.div`
     display: flex;
@@ -8,22 +10,24 @@ const Container = styled.div`
     justify-content: space-evenly;
 `;
 
-const activeClassName = "LinkActive";
-const Link = styled(NavLink).attrs({activeClassName})`
+const Link = styled.a<{active: boolean}>`
     color: gray;
 
-    &.${activeClassName} {
+    ${props => props.active && css`
         color: white;
-    }
+    `}
 `;
 
-export default class Navbar extends React.PureComponent {
+@observer
+export default class Navbar extends React.Component {
+    public toBrowse = () => Navigation.changePage("thunderstore");
+    public toManage = () => Navigation.changePage("modmanager");
     public render() {
         return (
             <Container>
-                <Link exact to="/"><h3>Browse Thunderstore</h3></Link>
+                <Link active={Navigation.currentPage === "thunderstore"} onClick={this.toBrowse}><h3>Browse Thunderstore</h3></Link>
                 {/* TODO: Work out how to not have this if its not in electron mode*/}
-                <Link exact to="/mod-manager"><h3>Installed Mods</h3></Link>
+                <Link active={Navigation.currentPage === "modmanager"} onClick={this.toManage}><h3>Installed Mods</h3></Link>
             </Container>
         );
     }

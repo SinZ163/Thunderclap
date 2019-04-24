@@ -1,5 +1,4 @@
 import * as React from "react";
-import {RouteComponentProps} from "react-router-dom";
 import { observer } from "mobx-react";
 import Markdown from "react-markdown";
 
@@ -7,10 +6,10 @@ import CodeBlock from "../utils/CodeBlock";
 import ThunderstoreAdapter from "./ThunderstoreAdapter";
 
 @observer
-export default class ModDetails extends React.Component<RouteComponentProps<{owner: string; name: string}>> {
+export default class ModDetails extends React.Component<{owner: string; name: string}> {
     public render() {
         // TODO: cache in state
-        const mod = ThunderstoreAdapter.packages.find(mod => mod.owner === this.props.match.params.owner && mod.name === this.props.match.params.name);
+        const mod = ThunderstoreAdapter.packages.find(mod => mod.owner === this.props.owner && mod.name === this.props.name);
         if (!mod) {
             return (
                 <h1>Unknown mod</h1>
@@ -22,6 +21,7 @@ export default class ModDetails extends React.Component<RouteComponentProps<{own
                 <Markdown
                     source={mod.versions[0].readme}
                     renderers={{code: CodeBlock}}
+                    linkTarget={() => "_blank"} 
                 />
                 <pre>
                     {JSON.stringify(mod, undefined, 4)}
