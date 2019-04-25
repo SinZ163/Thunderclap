@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled, {css} from "styled-components";
-import {darken} from "polished";
 
 import Navigation from "../Navigation";
 import {Mod} from "./ThunderstoreAdapter";
@@ -46,15 +45,6 @@ const Image = styled.img`
     height: 128px;
     margin-right: 10px;
 `;
-const Anchor = styled.a`
-    color: #00bc8c;
-    text-decoration: unset;
-
-    :hover {
-        color: ${darken(0.2, "#00bc8c")};
-        text-decoration: underline;
-    }
-`;
 interface Props {
     mod: Mod;
 }
@@ -69,7 +59,7 @@ export default class ModEntry extends React.PureComponent<Props> {
                 <Image src={this.props.mod.versions[0].icon} />
                 <Column>
                     <Row as="h3">
-                        <Anchor onClick={this.onClick}>{this.props.mod.name}</Anchor>
+                        <a onClick={this.onClick}>{this.props.mod.name}</a>
                         <span>{this.props.mod.versions[0].version_number}</span>
                     </Row>
                     <span>{this.props.mod.versions[0].description}</span>
@@ -78,7 +68,7 @@ export default class ModEntry extends React.PureComponent<Props> {
                         <span>|</span>
                         <span> {this.props.mod.versions[0].downloads} total downloads</span>
                         <span>|</span>
-                        <span><Anchor href={this.props.mod.versions[0].website_url} target="_blank">{this.props.mod.versions[0].website_url}</Anchor></span>
+                        <span><a href={this.props.mod.versions[0].website_url} rel="noopener noreferrer" target="_blank">{this.props.mod.versions[0].website_url}</a></span>
                     </Row>
                     <span>Last Updated: {this.props.mod.date_updated.toLocaleString(undefined, {year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit", timeZoneName: "short", hour12: true})}</span>
                 </Column>

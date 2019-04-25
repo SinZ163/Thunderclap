@@ -1,4 +1,5 @@
 import {observer} from "mobx-react";
+import {darken} from "polished";
 import * as React from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 
@@ -18,6 +19,15 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         line-height: 1.5;
         text-align: left;
+    }
+    a {
+        color: #00bc8c;
+        text-decoration: unset;
+
+        :hover {
+            color: ${darken(0.2, "#00bc8c")};
+            text-decoration: underline;
+        }
     }
 `;
 const theme = {

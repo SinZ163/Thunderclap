@@ -1,6 +1,6 @@
 {
-  "name": "thunderclap",
-  "version": "0.0.1",
+  "name": "Thunderclap",
+  "version": "0.0.2",
   "license": "MIT",
   "scripts": {
     "dev": "electron-webpack dev",
