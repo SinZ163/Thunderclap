@@ -26,6 +26,8 @@ export interface Mod {
     date_updated: Date;
     uuid4: string;
     is_pinned: boolean;
+
+    totalDownloads: number;
 }
 class ThunderstoreAdapter {
     @observable private _packages = Array<Mod>();
@@ -46,6 +48,7 @@ class ThunderstoreAdapter {
             versions,
             date_created: new Date(mod.date_created),
             date_updated: new Date(mod.date_updated),
+            totalDownloads: versions.reduce((total, current) => total + current.downloads, 0),
         };
     }
 

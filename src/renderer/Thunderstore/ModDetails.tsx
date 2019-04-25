@@ -85,7 +85,7 @@ export default class ModDetails extends React.Component<{owner: string; name: st
                     <TableCell>Latest version</TableCell>
                     <TableCell><a href={mod.versions[0].download_url}>{mod.versions[0].full_name}.zip</a></TableCell>
                     <TableCell>Total downloads</TableCell>
-                    <TableCell>{mod.versions.reduce((total, current) => total + current.downloads, 0)}</TableCell>
+                    <TableCell>{mod.totalDownloads}</TableCell>
                     <TableCell>Dependency string</TableCell>
                     <TableCell>{mod.versions[0].full_name}</TableCell>
                     <TableCell>Dependants</TableCell>
