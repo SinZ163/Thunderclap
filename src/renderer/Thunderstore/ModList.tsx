@@ -63,9 +63,9 @@ export default class Modlist extends React.Component<{}, State> {
     public newest = () => this.setState({mode: SearchOrder.Newest});
     public mostDownloaded = () => this.setState({mode: SearchOrder.MostDownloaded});
 
-    public searchChange = (event: TextEvent) => {
+    public searchChange = (event: React.FormEvent<HTMLInputElement>) => {
         if (event.target) {
-            this.setState({search: event.target.value});
+            this.setState({search: event.currentTarget.value});
         }
     }
     public render() {
