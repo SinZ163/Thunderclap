@@ -9,7 +9,7 @@
     "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null"
   },
   "dependencies": {
-    "highlight.js": "^9.15.6",
+    "highlight.js": "^10.4.1",
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.3",
     "polished": "^3.2.0",
